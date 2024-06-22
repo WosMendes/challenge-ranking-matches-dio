@@ -1,0 +1,43 @@
+// Desafio: Calculadora de Partidas Rankeadas da dio
+
+let keep = 0;
+do {
+  let playerWinCount = prompt("Insira a quantidade de vitórias do jogador: ");
+  let playerLoseCount = prompt("Insira a quantidade de derrotas do jogador: ");
+  rankingMatchesCalculator(playerWinCount, playerLoseCount);
+  keep = prompt("Digite '1' para inserir outro herói ou '0' para sair: ")
+} while (keep > 0);
+
+
+function rankingMatchesCalculator(playerWinCount, playerLoseCount) {
+  const balance = (playerWinCount - playerLoseCount);
+  let playerRanking = "Sem Ranking";
+
+  switch (true) {
+    case (balance <= 10):
+      playerRanking = "Ferro";
+      break;
+    case (balance >= 11 && balance <= 20):
+      playerRanking = "Bronze";
+      break;
+    case (balance >= 21 && balance <= 50):
+      playerRanking = "Prata";
+      break;
+    case (balance >= 51 && balance <= 80):
+      playerRanking = "Ouro";
+      break;
+    case (balance >= 81 && balance <= 90):
+      playerRanking = "Diamante";
+      break;
+    case (balance >= 91 && balance <= 100):
+      playerRanking = "Lendário";
+      break;
+    case (balance >= 101):
+      playerRanking = "Imortal";
+      break;
+    default:
+      playerRanking = "Ranking inválido";
+      break;
+  }
+  alert("O Herói tem de saldo de " + balance + " está no nível de " + playerRanking + "!");
+}
